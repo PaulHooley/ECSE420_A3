@@ -2,10 +2,11 @@ package ECSE420_A3;
 
 import ECSE420_A3.MatrixVectorMult;
 
+
 public class TestMatrixVectorMult {
     static MatrixVectorMult matrixVectorMult = new MatrixVectorMult();
     public static final int LENGTH = 2000;
-    public static final int NUMBER_THREADS = 8;
+    public static final int NUMBER_THREADS = Runtime.getRuntime().availableProcessors();
 
     public static void main(String[] args){
         System.out.println("Seq Multiplier");
@@ -16,9 +17,9 @@ public class TestMatrixVectorMult {
         long et = System.nanoTime();
         System.out.println("Seq Multiplier Duration (in nanoseconds): " + (et-st));
         st = System.nanoTime();
-        matrixVectorMult.parallelMultiply(m, v, NUMBER_THREADS);
+        matrixVectorMult.parallelMult(m, v, NUMBER_THREADS);
         et = System.nanoTime();
-        System.out.println("Parallel Multiplier 1 Duration (in nanoseconds): " + (et-st));
+        System.out.println("Parallel Multiplier 2 Duration (in nanoseconds): " + (et-st));
     }
 
     /**
